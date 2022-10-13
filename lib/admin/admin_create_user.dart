@@ -31,6 +31,8 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
                       key: _userKey,
                       child: Column(
                         children: <Widget>[
+                          Text("Create User",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30)),
+                          SizedBox(height: 40.0),
                           TextFormField(
                             controller: _usernameTextController,
                             validator: (value) => Validator.validateName(
@@ -103,12 +105,26 @@ class _AdminCreateUserState extends State<AdminCreateUser> {
                               Expanded(
                                 child: ElevatedButton(
                                   onPressed: () async {
-                                    final String? name = _usernameTextController.text;
-                                    final String? designation =_passwordTextController.text;
-                                    final String? date = dateCtl.text;
-                                    if (name != null && designation != null && date != null) {
+                                    final String name = _usernameTextController.text;
+                                    final String designation =_passwordTextController.text;
+                                    final String date = dateCtl.text;
+                                    if (name.isNotEmpty && designation.isNotEmpty && date.isNotEmpty) {
                                         await userCollection.add({"username": name, "password": designation, "dob":date});
-                                      Navigator.of(context).pop();
+                                        final snackBar = SnackBar(
+                                          content: const Text(
+                                              'User created Successfully'),
+                                        );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
+                                        Navigator.of(context).pop();
+                                    }
+                                    else{
+                                      final snackBar = SnackBar(
+                                        content: const Text(
+                                            'Please fill all the fields'),
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
                                     }
                                   },
                                   child: Text(

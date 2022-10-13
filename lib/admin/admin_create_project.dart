@@ -76,6 +76,8 @@ class _AdminCreateProjectState extends State<AdminCreateProject> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Text("Create Project",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 30)),
+                SizedBox(height: 40.0),
                 Form(
                   key: _projectKey,
                   child: Column(
@@ -253,23 +255,23 @@ class _AdminCreateProjectState extends State<AdminCreateProject> {
                                 Expanded(
                                   child: ElevatedButton(
                                     onPressed: () async {
-                                      final String? projectname =
+                                      final String projectname =
                                           _nameTextController.text;
-                                      final String? projectdate = dateCtl.text;
+                                      final String projectdate = dateCtl.text;
                                       final String? companyname =
                                           dropdownvalue_company;
-                                      final String? website =
+                                      final String website =
                                           _websiteTextController.text;
                                       final String? assign_user =
                                           dropdownvalue_user;
-                                      final String? location =
+                                      final String location =
                                           _locationTextController.text;
-                                      if (projectname != null &&
-                                          projectdate != null &&
+                                      if (projectname.isNotEmpty &&
+                                          projectdate.isNotEmpty &&
                                           companyname != null &&
-                                          website != null &&
-                                          location != null &&
-                                          assign_user != null) {
+                                          website.isNotEmpty &&
+                                          location.isNotEmpty &&
+                                          assign_user != null ) {
                                         await myprojects.add({
                                           "project_name": projectname,
                                           "project_date": projectdate,
@@ -278,7 +280,21 @@ class _AdminCreateProjectState extends State<AdminCreateProject> {
                                           "lat_lng": location,
                                           "assign_user": assign_user
                                         });
+                                        final snackBar = SnackBar(
+                                          content: const Text(
+                                              'Project created Sucessfully'),
+                                        );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
                                         Navigator.of(context).pop();
+                                      }
+                                      else{
+                                        final snackBar = SnackBar(
+                                          content: const Text(
+                                              'Please fill all the fields'),
+                                        );
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
                                       }
                                     },
                                     child: Text(

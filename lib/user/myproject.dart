@@ -123,7 +123,7 @@ class _MyProjectState extends State<MyProject> {
                         ),
                       ),
                       SizedBox(height: 25.0),
-                      TextFormField(
+                      /*TextFormField(
                         enabled: false,
                         controller: _locationTextController,
                         validator: (value) => Validator.validateEmail(
@@ -141,7 +141,7 @@ class _MyProjectState extends State<MyProject> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 25.0),
+                      SizedBox(height: 25.0),*/
                       Container(
                         child: FlutterMap(
                           options: MapOptions(

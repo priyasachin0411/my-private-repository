@@ -48,14 +48,17 @@ class _LoginPageState extends State<LoginPage> {
         if(data['username'] == _usernameTextController.text && data['password'] == _passwordTextController.text){
           credentials = true;
           prefs.setString('username',_usernameTextController.text );
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return UserScreen();
-              },
-            ),
-          );
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => UserScreen()),(Route<dynamic> route) => false);
+
         }
+      }
+      if(credentials == false){
+        final snackBar = SnackBar(
+          content: const Text(
+              'Incorrect User Name or Password'),
+        );
+        ScaffoldMessenger.of(context)
+            .showSnackBar(snackBar);
       }
     });
   }
@@ -92,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         SizedBox(height: 25.0),
                         TextFormField(
+                          obscureText: true,
                           controller: _passwordTextController,
                           decoration: InputDecoration(
                             hintText: "Password",
@@ -115,28 +119,14 @@ class _LoginPageState extends State<LoginPage> {
                               child: ElevatedButton(
                                 onPressed: () async {
                                   if(_usernameTextController.text.isNotEmpty && _passwordTextController.text.isNotEmpty){
-                                    if(_usernameTextController.toString() == "Admin@kssmart.co" && _passwordTextController.text == "123456"){
-                                      credentials =  true;
+                                    if(_usernameTextController.text == "Admin@kssmart.co" && _passwordTextController.text == "123456"){
                                       _isProcessing = false;
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return AdminScreen();
-                                          },
-                                        ),
-                                      );
+                                      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => AdminScreen()),(Route<dynamic> route) => false);
+
                                     }
                                     else{
-                                      _isProcessing = false;
+                                      _isProcessing = false ;
                                       getData();
-                                    }
-                                    if(!credentials){
-                                      final snackBar = SnackBar(
-                                        content: const Text(
-                                            'Incorrect User Name or Password'),
-                                      );
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(snackBar);
                                     }
                                   }
                                   else{
