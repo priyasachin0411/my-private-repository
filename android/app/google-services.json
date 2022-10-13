@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "405753511283",
+    "project_id": "kstask-87bdd",
+    "storage_bucket": "kstask-87bdd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405753511283:android:428067468c823adffcd906",
+        "android_client_info": {
+          "package_name": "com.example.kstask"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405753511283-r29t5n2tntf82i00ncgturnbinqp472g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kstask",
+            "certificate_hash": "cc5b8b8d70f9fac4d55cb451cbf95e9d018f1cbf"
+          }
+        },
+        {
+          "client_id": "405753511283-5vbm126l1s44vnut8phpi6pbjqnvpfmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfzIDGJvpv37icDmoTATE4hfm2suQpnBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405753511283-5vbm126l1s44vnut8phpi6pbjqnvpfmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
